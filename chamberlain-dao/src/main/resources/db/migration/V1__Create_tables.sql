@@ -11,6 +11,7 @@ CREATE TABLE product
     name                VARCHAR(255) CHARACTER SET utf8 NOT NULL,
     type_id             BIGINT                          NOT NULL,
     price               DOUBLE                          NOT NULL,
+    amount              INTEGER DEFAULT 0               NOT NULL,
     measureType         VARCHAR(255) CHARACTER SET utf8 NOT NULL,
     description         TEXT CHARACTER SET utf8         NOT NULL,
     CONSTRAINT pk_product_table PRIMARY KEY (id),

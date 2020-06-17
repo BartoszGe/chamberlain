@@ -22,10 +22,10 @@ public class ProductRepository extends ProductDao {
 
   public List<ProductWithType> findAllWithType() {
 
-    return dsl.select(PRODUCT.ID, PRODUCT.NAME, PRODUCT.PRICE, PRODUCT.MEASURETYPE, PRODUCT.DESCRIPTION, PRODUCT_TYPE.NAME.as("type") )
-                         .from(PRODUCT)
-                         .join(PRODUCT_TYPE)
-                         .on(PRODUCT_TYPE.ID.eq(PRODUCT.TYPE_ID))
-                         .fetchInto(ProductWithType.class);
+    return dsl.select(PRODUCT.ID, PRODUCT.NAME, PRODUCT.PRICE, PRODUCT.AMOUNT, PRODUCT.MEASURETYPE, PRODUCT.DESCRIPTION, PRODUCT_TYPE.NAME.as("type"))
+              .from(PRODUCT)
+              .join(PRODUCT_TYPE)
+              .on(PRODUCT_TYPE.ID.eq(PRODUCT.TYPE_ID))
+              .fetchInto(ProductWithType.class);
   }
 }

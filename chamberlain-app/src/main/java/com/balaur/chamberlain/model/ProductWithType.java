@@ -13,6 +13,8 @@ public class ProductWithType {
 
   private final double price;
 
+  private final int amount;
+
   private final String measureType;
 
   private final String description;
