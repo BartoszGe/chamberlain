@@ -1,7 +1,7 @@
-INSERT INTO product_type (id, type) values (1, 'pieczywo');
-INSERT INTO product_type (id, type) values (2, 'mięso');
-INSERT INTO product_type (id, type) values (3, 'nabiał');
-INSERT INTO product_type (id, type) values (4, 'owoce');
+INSERT INTO product_type (id, name) values (1, 'pieczywo');
+INSERT INTO product_type (id, name) values (2, 'mięso');
+INSERT INTO product_type (id, name) values (3, 'nabiał');
+INSERT INTO product_type (id, name) values (4, 'owoce');
 
 INSERT INTO product (name, type_id, price, measureType, description) VALUES ('Ziemniaki krajowe młode', 4,  5.49, 'kg.', 'Ziemniaki niemyte. Bogate w skrobię oraz stanowią nieodzowny składnik diety. Szybkie i łatwe w przygotowaniu. Kaliber powyżej 35mm średnicy.');
 INSERT INTO product (name, type_id, price, measureType, description) VALUES ('Kalafior', 4, 6.99, 'kg.', 'Kalafior początkowo popularny był wyłącznie na Cyprze, skąd pochodzi, jednak bardzo szybko zaczął stawać się wykorzystywany w innych częściach świata. Do Polski trafił dopiero w XVI wieku, jednak od tamtego czasu zyskał sobie ogromną przychylność wielu pasjonatów gotowania. Wykorzystuje się go obecnie całkiem powszechnie jako składnik zup, sałatek oraz wielu rozmaitych potraw. Idealnie komponuje się z innymi warzywami, chociażby z marchewką czy groszkiem, dzięki czemu często stanowi nawet jeden z podstawowych dodatków do dań głównych, goszczących podczas obiadu. ');

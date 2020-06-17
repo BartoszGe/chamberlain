@@ -2,7 +2,8 @@ package com.balaur.chamberlain.service;
 
 import com.balaur.chamberlain.model.ProductWithType;
 import com.balaur.chamberlain.repository.ProductRepository;
-import io.vavr.collection.List;
+
+import java.util.List;
 
 public class ProductService {
 

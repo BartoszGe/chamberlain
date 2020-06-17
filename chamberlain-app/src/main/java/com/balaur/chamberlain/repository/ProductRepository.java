@@ -2,9 +2,10 @@ package com.balaur.chamberlain.repository;
 
 import com.balaur.chamberlain.dao.chamberlain.tables.daos.ProductDao;
 import com.balaur.chamberlain.model.ProductWithType;
-import io.vavr.collection.List;
 import org.jooq.DSLContext;
 import org.jooq.impl.DefaultDSLContext;
+
+import java.util.List;
 
 import static com.balaur.chamberlain.dao.chamberlain.tables.Product.PRODUCT;
 import static com.balaur.chamberlain.dao.chamberlain.tables.ProductType.PRODUCT_TYPE;
@@ -20,10 +21,11 @@ public class ProductRepository extends ProductDao {
   }
 
   public List<ProductWithType> findAllWithType() {
-    return List.ofAll(dsl.select()
-                  .from(PRODUCT)
-                  .join(PRODUCT_TYPE)
-                  .on(PRODUCT_TYPE.ID.eq(PRODUCT.TYPE_ID))
-                  .fetchInto(ProductWithType.class));
+
+    return dsl.select(PRODUCT.ID, PRODUCT.NAME, PRODUCT.PRICE, PRODUCT.MEASURETYPE, PRODUCT.DESCRIPTION, PRODUCT_TYPE.NAME.as("type") )
+                         .from(PRODUCT)
+                         .join(PRODUCT_TYPE)
+                         .on(PRODUCT_TYPE.ID.eq(PRODUCT.TYPE_ID))
+                         .fetchInto(ProductWithType.class);
   }
 }
