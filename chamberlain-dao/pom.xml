@@ -46,7 +46,7 @@
             <schema>chamberlain</schema>
           </schemas>
           <driver>com.mysql.cj.jdbc.Driver</driver>
-          <url>jdbc:mysql://localhost:3306/chamberlain?useSSL=false&amp;serverTimezone=UTC</url>
+          <url>jdbc:mysql://localhost:3306/chamberlain?useSSL=false&amp;serverTimezone=UTC&amp;autoreconnect=true&amp;useUnicode=true&amp;characterEncoding=UTF-8</url>
           <user>root</user>
           <password>toor</password>
         </configuration>
