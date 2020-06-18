@@ -17,3 +17,10 @@ CREATE TABLE product
     CONSTRAINT pk_product_table PRIMARY KEY (id),
     FOREIGN KEY (type_id) REFERENCES product_type (id)
 );
+
+CREATE TABLE product_request
+(
+    id                  BIGINT AUTO_INCREMENT           NOT NULL,
+    product_name        VARCHAR(255) CHARACTER SET utf8 NOT NULL,
+    CONSTRAINT pk_product_request PRIMARY KEY (id)
+)
