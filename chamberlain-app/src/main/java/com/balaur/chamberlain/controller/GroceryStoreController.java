@@ -7,11 +7,11 @@ import org.springframework.web.bind.annotation.*;
 @CrossOrigin(origins = "http://localhost:4200")
 @RestController
 @RequestMapping(path = "rest/shop")
-public class ShopController {
+public class GroceryStoreController {
 
   private final ProductService productService;
 
-  public ShopController(final ProductService productService) {
+  public GroceryStoreController(final ProductService productService) {
 
     this.productService = productService;
   }
@@ -25,7 +25,6 @@ public class ShopController {
   @PostMapping("/product")
   public ResponseEntity<?> postProduct(@RequestParam(required = true) final String name) {
 
-    System.out.println(name);
     return ResponseEntity.ok(productService.insertIntoProductRequest(name));
   }
 }

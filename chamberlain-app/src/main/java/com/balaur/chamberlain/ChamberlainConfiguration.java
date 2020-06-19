@@ -1,7 +1,9 @@
 package com.balaur.chamberlain;
 
+import com.balaur.chamberlain.repository.OrderRepository;
 import com.balaur.chamberlain.repository.ProductRepository;
 import com.balaur.chamberlain.repository.ProductRequestRepository;
+import com.balaur.chamberlain.service.OrderService;
 import com.balaur.chamberlain.service.ProductService;
 import org.jooq.impl.DefaultDSLContext;
 import org.springframework.context.annotation.Bean;
@@ -27,5 +29,17 @@ public class ChamberlainConfiguration {
                                        final ProductRequestRepository productRequestRepository) {
 
     return new ProductService(productRepository, productRequestRepository);
+  }
+
+  @Bean
+  public OrderRepository orderRepository(final DefaultDSLContext dsl) {
+
+    return new OrderRepository(dsl);
+  }
+
+  @Bean
+  public OrderService orderService(final OrderRepository orderRepository) {
+
+    return new OrderService(orderRepository);
   }
 }

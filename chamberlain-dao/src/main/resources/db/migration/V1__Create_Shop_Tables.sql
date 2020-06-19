@@ -23,4 +23,13 @@ CREATE TABLE product_request
     id                  BIGINT AUTO_INCREMENT           NOT NULL,
     product_name        VARCHAR(255) CHARACTER SET utf8 NOT NULL,
     CONSTRAINT pk_product_request PRIMARY KEY (id)
-)
+);
+
+CREATE TABLE service_order
+(
+    id                  BIGINT AUTO_INCREMENT           NOT NULL,
+    price               DOUBLE                          NOT NULL,
+    delivery_time       DATETIME                        NOT NULL,
+    delivery_place      VARCHAR(512)                    NOT NULL,
+    CONSTRAINT pk_service_order PRIMARY KEY (id)
+);
