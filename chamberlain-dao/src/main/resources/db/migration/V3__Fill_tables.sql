@@ -24,6 +24,10 @@ INSERT INTO product (name, type_id, price, measureType, description) VALUES ('Ż
 INSERT INTO product (name, type_id, price, measureType, description) VALUES ('Chałka', 1, 5.99, 'szt.', 'Ta chałka wypiekana jest w oparciu o tradycyjną recepturę znaną od wielu lat, wyłącznie przy wykorzystaniu naturalnych składników. Unikalny, lekko słodki smak zawdzięcza delikatnej posypce z prawdziwej kruszonki. Wykonany z najwyższej klasy drożdżowego ciasta warkocz będzie doskonałym dodatkiem do kubka kakao, przekąską podczas przerwy w pracy, czy szkole, a dodatkowo dobrze sprawdzi się podczas tradycyjnej kolacji wigilijnej. Przy wypieku chałki, piekarnie Putka nie stosują chemicznych polepszaczy smaku ani konsystencji, jednocześnie gwarantując długą trwałość pieczywa.');
 INSERT INTO product (name, type_id, price, measureType, description) VALUES ('Bułka grahamka', 1, 0.90, 'szt.', 'Bułka pszenno-żytnia z dodatkiem otrąb pszennych, ziaren żyta, płatków owsianych, ziaren słonecznika i siemienia lnianego. Będzie to zdrowa i pożywna baza do zdrowych kanapek. Idealna na śniadanie lub lunch. ');
 
+INSERT INTO permission (id, type) VALUES (1, 'admin');
+INSERT INTO permission (id, type) VALUES (2, 'courier');
+INSERT INTO permission (id, type) VALUES (3, 'client');
 
-
-
+INSERT INTO user (id, login, name, surname, permission_id) VALUES (1, 'admin_login', 'Andrzej', 'Kierownik', 1);
+INSERT INTO user (id, login, name, surname, permission_id) VALUES (2, 'courier_login', 'Grzegorz', 'Kowalski', 2);
+INSERT INTO user (id, login, name, surname, permission_id) VALUES (3, 'client_login', 'Mietek', 'Mietkowski', 3);

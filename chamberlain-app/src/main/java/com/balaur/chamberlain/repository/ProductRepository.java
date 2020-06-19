@@ -6,7 +6,6 @@ import org.jooq.DSLContext;
 import org.jooq.impl.DefaultDSLContext;
 
 import java.util.List;
-
 import static com.balaur.chamberlain.dao.chamberlain.tables.Product.PRODUCT;
 import static com.balaur.chamberlain.dao.chamberlain.tables.ProductType.PRODUCT_TYPE;
 

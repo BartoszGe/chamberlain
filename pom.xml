@@ -44,6 +44,11 @@
       <artifactId>jooq-codegen-maven</artifactId>
       <version>${jooq.version}</version>
     </dependency>
+    <dependency>
+      <groupId>org.springframework.boot</groupId>
+      <artifactId>spring-boot-configuration-processor</artifactId>
+      <optional>true</optional>
+    </dependency>
   </dependencies>
 
   <build>
@@ -64,10 +69,6 @@
         <plugin>
           <groupId>org.springframework.boot</groupId>
           <artifactId>spring-boot-maven-plugin</artifactId>
-          <configuration>
-            <executable>true</executable>
-            <mainClass>com.balaur.chamberlain.ChamberlainApplication</mainClass>
-          </configuration>
         </plugin>
       </plugins>
     </pluginManagement>
