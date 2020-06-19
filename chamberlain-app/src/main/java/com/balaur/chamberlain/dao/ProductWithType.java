@@ -1,4 +1,4 @@
-package com.balaur.chamberlain.model;
+package com.balaur.chamberlain.dao;
 
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
@@ -19,5 +19,5 @@ public class ProductWithType {
 
   private final String description;
 
-  private final String type;
+  private final ProductTypeEnum type;
 }

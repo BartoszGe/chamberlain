@@ -1,11 +1,11 @@
 package com.balaur.chamberlain.repository;
 
-import com.balaur.chamberlain.dao.chamberlain.tables.daos.ServiceOrderDao;
-import com.balaur.chamberlain.dao.chamberlain.tables.pojos.ServiceOrder;
+import com.balaur.chamberlain.dao.tables.daos.ServiceOrderDao;
+import com.balaur.chamberlain.dao.tables.pojos.ServiceOrder;
 import org.jooq.DSLContext;
 import org.jooq.impl.DefaultDSLContext;
 
-import static com.balaur.chamberlain.dao.chamberlain.tables.ServiceOrder.SERVICE_ORDER;
+import static com.balaur.chamberlain.dao.tables.ServiceOrder.SERVICE_ORDER;
 
 public class OrderRepository extends ServiceOrderDao {
 

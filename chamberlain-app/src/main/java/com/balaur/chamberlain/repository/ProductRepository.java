@@ -1,13 +1,15 @@
 package com.balaur.chamberlain.repository;
 
-import com.balaur.chamberlain.dao.chamberlain.tables.daos.ProductDao;
-import com.balaur.chamberlain.model.ProductWithType;
+import com.balaur.chamberlain.dao.ProductWithType;
+import com.balaur.chamberlain.dao.tables.daos.ProductDao;
+import com.balaur.chamberlain.dao.tables.pojos.Product;
 import org.jooq.DSLContext;
 import org.jooq.impl.DefaultDSLContext;
 
 import java.util.List;
-import static com.balaur.chamberlain.dao.chamberlain.tables.Product.PRODUCT;
-import static com.balaur.chamberlain.dao.chamberlain.tables.ProductType.PRODUCT_TYPE;
+
+import static com.balaur.chamberlain.dao.tables.Product.PRODUCT;
+import static com.balaur.chamberlain.dao.tables.ProductType.PRODUCT_TYPE;
 
 public class ProductRepository extends ProductDao {
 
@@ -26,5 +28,15 @@ public class ProductRepository extends ProductDao {
               .join(PRODUCT_TYPE)
               .on(PRODUCT_TYPE.ID.eq(PRODUCT.TYPE_ID))
               .fetchInto(ProductWithType.class);
+  }
+
+  public Long insertIntoReturningId(final Product product) {
+
+    return dsl.insertInto(PRODUCT)
+              .set(dsl.newRecord(PRODUCT, product))
+              .returning(PRODUCT.ID)
+              .fetchOne()
+              .into(Product.class)
+              .getId();
   }
 }

@@ -1,9 +1,6 @@
 package com.balaur.chamberlain;
 
-import com.balaur.chamberlain.repository.OrderRepository;
-import com.balaur.chamberlain.repository.ProductRepository;
-import com.balaur.chamberlain.repository.ProductRequestRepository;
-import com.balaur.chamberlain.repository.UserRepository;
+import com.balaur.chamberlain.repository.*;
 import com.balaur.chamberlain.service.OrderService;
 import com.balaur.chamberlain.service.ProductService;
 import com.balaur.chamberlain.service.UserService;
@@ -21,6 +18,12 @@ public class ChamberlainConfiguration {
   }
 
   @Bean
+  public ProductTypeRepository productTypeRepository(final DefaultDSLContext dsl) {
+
+    return new ProductTypeRepository(dsl);
+  }
+
+  @Bean
   public ProductRequestRepository productRequestRepository(final DefaultDSLContext dsl) {
 
     return new ProductRequestRepository(dsl);
@@ -28,9 +31,10 @@ public class ChamberlainConfiguration {
 
   @Bean
   public ProductService productService(final ProductRepository productRepository,
-                                       final ProductRequestRepository productRequestRepository) {
+                                       final ProductRequestRepository productRequestRepository,
+                                       final ProductTypeRepository productTypeRepository) {
 
-    return new ProductService(productRepository, productRequestRepository);
+    return new ProductService(productRepository, productRequestRepository, productTypeRepository);
   }
 
   @Bean

@@ -1,6 +1,6 @@
 package com.balaur.chamberlain.service;
 
-import com.balaur.chamberlain.dao.chamberlain.tables.pojos.ServiceOrder;
+import com.balaur.chamberlain.dao.tables.pojos.ServiceOrder;
 import com.balaur.chamberlain.repository.OrderRepository;
 
 public class OrderService {

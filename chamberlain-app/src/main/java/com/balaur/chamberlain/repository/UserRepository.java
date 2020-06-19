@@ -1,12 +1,12 @@
 package com.balaur.chamberlain.repository;
 
-import com.balaur.chamberlain.dao.chamberlain.tables.daos.UserDao;
-import com.balaur.chamberlain.model.UserSimple;
+import com.balaur.chamberlain.dao.UserSimple;
+import com.balaur.chamberlain.dao.tables.daos.UserDao;
 import org.jooq.DSLContext;
 import org.jooq.impl.DefaultDSLContext;
 
-import static com.balaur.chamberlain.dao.chamberlain.Tables.PERMISSION;
-import static com.balaur.chamberlain.dao.chamberlain.Tables.USER;
+import static com.balaur.chamberlain.dao.tables.Permission.PERMISSION;
+import static com.balaur.chamberlain.dao.tables.User.USER;
 
 public class UserRepository extends UserDao {
 

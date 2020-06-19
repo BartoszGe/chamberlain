@@ -1,6 +1,6 @@
 package com.balaur.chamberlain.service;
 
-import com.balaur.chamberlain.model.UserSimple;
+import com.balaur.chamberlain.dao.UserSimple;
 import com.balaur.chamberlain.repository.UserRepository;
 
 public class UserService {

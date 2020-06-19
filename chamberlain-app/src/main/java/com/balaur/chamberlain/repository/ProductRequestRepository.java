@@ -1,10 +1,10 @@
 package com.balaur.chamberlain.repository;
 
-import com.balaur.chamberlain.dao.chamberlain.tables.daos.ProductRequestDao;
+import com.balaur.chamberlain.dao.tables.daos.ProductRequestDao;
 import org.jooq.DSLContext;
 import org.jooq.impl.DefaultDSLContext;
 
-import static com.balaur.chamberlain.dao.chamberlain.tables.ProductRequest.PRODUCT_REQUEST;
+import static com.balaur.chamberlain.dao.tables.ProductRequest.PRODUCT_REQUEST;
 
 public class ProductRequestRepository extends ProductRequestDao {
 

@@ -1,4 +1,4 @@
-package com.balaur.chamberlain.model;
+package com.balaur.chamberlain.dao;
 
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;

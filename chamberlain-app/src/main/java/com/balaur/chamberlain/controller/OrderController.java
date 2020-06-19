@@ -1,6 +1,6 @@
 package com.balaur.chamberlain.controller;
 
-import com.balaur.chamberlain.dao.chamberlain.tables.pojos.ServiceOrder;
+import com.balaur.chamberlain.dao.tables.pojos.ServiceOrder;
 import com.balaur.chamberlain.service.OrderService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
