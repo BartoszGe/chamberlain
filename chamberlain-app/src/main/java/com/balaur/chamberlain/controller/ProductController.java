@@ -38,4 +38,11 @@ public class ProductController {
 
     return ResponseEntity.ok(productService.insertIntoProductRequest(name));
   }
+
+
+  @DeleteMapping("/deleteProduct")
+  public ResponseEntity<?> deleteProduct(@RequestParam(required = true) final Long id) {
+
+    return ResponseEntity.ok(productService.deleteById(id));
+  }
 }

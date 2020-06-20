@@ -2,7 +2,9 @@ package com.balaur.chamberlain.service;
 
 import com.balaur.chamberlain.dao.UserSimple;
 import com.balaur.chamberlain.repository.UserRepository;
+import org.springframework.stereotype.Service;
 
+@Service
 public class UserService {
 
   private final UserRepository userRepository;

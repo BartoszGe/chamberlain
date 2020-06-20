@@ -25,11 +25,24 @@ CREATE TABLE PRODUCT_REQUEST
     CONSTRAINT pk_product_request PRIMARY KEY (id)
 );
 
-CREATE TABLE SERVICE_ORDER
+CREATE TABLE ORDER_SERVICE
 (
     id                  BIGINT AUTO_INCREMENT           NOT NULL,
     price               DOUBLE                          NOT NULL,
     delivery_time       DATETIME                        NOT NULL,
     delivery_place      VARCHAR(512)                    NOT NULL,
+    delivery_problem    TEXT,
     CONSTRAINT pk_service_order PRIMARY KEY (id)
 );
+
+CREATE TABLE PRODUCT_X_ORDER
+(
+    id                  BIGINT AUTO_INCREMENT           NOT NULL,
+    product_id          BIGINT                          NOT NULL,
+    amount              INTEGER                         NOT NULL,
+    order_service_id    BIGINT                          NOT NULL,
+
+    CONSTRAINT pk_productOrder PRIMARY KEY (id),
+    FOREIGN KEY (product_id) REFERENCES PRODUCT (id),
+    FOREIGN KEY (order_service_id) REFERENCES ORDER_SERVICE (id)
+)

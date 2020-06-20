@@ -1,15 +1,14 @@
 package com.balaur.chamberlain.repository;
 
-import com.balaur.chamberlain.dao.tables.daos.ServiceOrderDao;
-import com.balaur.chamberlain.dao.tables.pojos.ServiceOrder;
-import org.jooq.DSLContext;
+import com.balaur.chamberlain.dao.tables.daos.OrderServiceDao;
+import com.balaur.chamberlain.dao.tables.pojos.OrderService;
 import org.jooq.impl.DefaultDSLContext;
 
-import static com.balaur.chamberlain.dao.tables.ServiceOrder.SERVICE_ORDER;
+import static com.balaur.chamberlain.dao.tables.OrderService.ORDER_SERVICE;
 
-public class OrderRepository extends ServiceOrderDao {
+public class OrderRepository extends OrderServiceDao {
 
-  private final DSLContext dsl;
+  private final DefaultDSLContext dsl;
 
   public OrderRepository(final DefaultDSLContext dsl) {
 
@@ -17,13 +16,13 @@ public class OrderRepository extends ServiceOrderDao {
     this.dsl = dsl;
   }
 
-  public Long insertIntoReturningId(final ServiceOrder serviceOrder) {
+  public Long insertIntoReturningId(final OrderService serviceOrder) {
 
-    return dsl.insertInto(SERVICE_ORDER)
-              .set(dsl.newRecord(SERVICE_ORDER, serviceOrder))
-              .returning(SERVICE_ORDER.ID)
+    return dsl.insertInto(ORDER_SERVICE)
+              .set(dsl.newRecord(ORDER_SERVICE, serviceOrder))
+              .returning(ORDER_SERVICE.ID)
               .fetchOne()
-              .into(ServiceOrder.class)
+              .into(OrderService.class)
               .getId();
   }
 }

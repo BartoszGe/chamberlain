@@ -6,9 +6,11 @@ import com.balaur.chamberlain.dao.tables.pojos.Product;
 import com.balaur.chamberlain.repository.ProductRepository;
 import com.balaur.chamberlain.repository.ProductRequestRepository;
 import com.balaur.chamberlain.repository.ProductTypeRepository;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 
+@Service
 public class ProductService {
 
   private final ProductRepository productRepository;
@@ -40,5 +42,11 @@ public class ProductService {
 
     Long typeId = productTypeRepository.getIdByType(type);
     return productRepository.insertIntoReturningId(new Product(null, name, typeId, price, 0, measureType, description));
+  }
+
+  public Long deleteById(final Long id) {
+
+    productRepository.deleteById(id);
+    return id;
   }
 }
