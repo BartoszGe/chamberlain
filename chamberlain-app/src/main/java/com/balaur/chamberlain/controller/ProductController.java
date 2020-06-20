@@ -17,6 +17,12 @@ public class ProductController {
     this.productService = productService;
   }
 
+  @GetMapping("/productsByOrder")
+  public ResponseEntity<?> getProductByOrder(@RequestParam(required = true) final Long id) {
+
+    return ResponseEntity.ok(productService.getByOrder(id));
+  }
+
   @GetMapping("/products")
   public ResponseEntity<?> getProducts() {
 

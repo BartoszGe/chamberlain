@@ -28,6 +28,11 @@ public class ProductService {
     this.productTypeRepository = productTypeRepository;
   }
 
+  public List<Product> getByOrder(final Long id) {
+
+    return productRepository.getByOrderId(id);
+  }
+
   public List<ProductWithType> findAll() {
 
     return productRepository.findAllWithType();

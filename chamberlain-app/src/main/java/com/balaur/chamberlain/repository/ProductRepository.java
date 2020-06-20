@@ -10,6 +10,7 @@ import java.util.List;
 
 import static com.balaur.chamberlain.dao.tables.Product.PRODUCT;
 import static com.balaur.chamberlain.dao.tables.ProductType.PRODUCT_TYPE;
+import static com.balaur.chamberlain.dao.tables.ProductXOrder.PRODUCT_X_ORDER;
 
 public class ProductRepository extends ProductDao {
 
@@ -23,11 +24,21 @@ public class ProductRepository extends ProductDao {
 
   public List<ProductWithType> findAllWithType() {
 
-    return dsl.select(PRODUCT.ID, PRODUCT.NAME, PRODUCT.PRICE, PRODUCT.AMOUNT, PRODUCT.MEASURETYPE, PRODUCT.DESCRIPTION, PRODUCT_TYPE.NAME.as("type"))
+    return dsl.select(PRODUCT.ID, PRODUCT.NAME, PRODUCT.PRICE, PRODUCT.AMOUNT, PRODUCT.MEASURE_TYPE, PRODUCT.DESCRIPTION, PRODUCT_TYPE.NAME.as("type"))
               .from(PRODUCT)
               .join(PRODUCT_TYPE)
               .on(PRODUCT_TYPE.ID.eq(PRODUCT.TYPE_ID))
               .fetchInto(ProductWithType.class);
+  }
+
+  public List<Product> getByOrderId(final Long id) {
+
+    return dsl.select()
+        .from(PRODUCT)
+        .join(PRODUCT_X_ORDER)
+        .on(PRODUCT_X_ORDER.PRODUCT_ID.eq(PRODUCT.ID))
+        .where(PRODUCT_X_ORDER.ORDER_SERVICE_ID.eq(id))
+        .fetchInto(Product.class);
   }
 
   public Long insertIntoReturningId(final Product product) {
@@ -39,4 +50,5 @@ public class ProductRepository extends ProductDao {
               .into(Product.class)
               .getId();
   }
+
 }

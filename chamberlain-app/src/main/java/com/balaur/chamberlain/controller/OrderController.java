@@ -20,10 +20,10 @@ public class OrderController {
     this.productOrderService = productOrderService;
   }
 
-  @GetMapping("/products")
+  @GetMapping("/productsNotFinalized")
   public ResponseEntity<?> getProductsOrder() {
 
-    return ResponseEntity.ok(productOrderService.findAllOrders());
+    return ResponseEntity.ok(productOrderService.findAllNotFinalized());
   }
 
   @PostMapping("/new")
@@ -31,7 +31,7 @@ public class OrderController {
                                             @RequestParam(required = true) String deliveryTime,
                                             @RequestParam(required = true) String deliveryPlace) {
 
-    final OrderService order = new OrderService(null, price, Timestamp.valueOf(deliveryTime), deliveryPlace, null);
+    final OrderService order = new OrderService(null, price, Timestamp.valueOf(deliveryTime), deliveryPlace, null, false);
     return ResponseEntity.ok(productOrderService.insertIntoReturningId(order));
   }
 
@@ -41,6 +41,14 @@ public class OrderController {
                                              @RequestParam(required = true) long orderId) {
 
     productOrderService.insertProductForOrders(new ProductXOrder(null, id, amount, orderId));
+    return ResponseEntity.ok().build();
+  }
+
+  @PatchMapping("/finalize")
+  public ResponseEntity<?> patchOrder(@RequestParam(required = true) long id,
+                                      @RequestParam(required = true) String deliveryProblem) {
+
+    productOrderService.finalizeOrder(id, deliveryProblem);
     return ResponseEntity.ok().build();
   }
 }

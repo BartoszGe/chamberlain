@@ -27,13 +27,20 @@ public class ProductOrderService {
     return orderRepository.insertIntoReturningId(serviceOrder);
   }
 
-  public List<OrderService> findAllOrders() {
+  public List<OrderService> findAllNotFinalized() {
 
-    return this.orderRepository.findAll();
+    return orderRepository.findAllNotFinalized();
   }
 
   public void insertProductForOrders(final ProductXOrder productXOrder) {
 
     productXOrderRepository.insert(productXOrder);
   }
+
+  public void finalizeOrder(final long id, final String deliveryProblem) {
+
+    orderRepository.finalizeOrder(id, deliveryProblem);
+  }
+
+
 }
