@@ -12,8 +12,9 @@ CREATE TABLE PRODUCT
     type_id             BIGINT                          NOT NULL,
     price               DOUBLE                          NOT NULL,
     amount              INTEGER DEFAULT 0               NOT NULL,
-    measure_type         VARCHAR(255) CHARACTER SET utf8 NOT NULL,
+    measure_type        VARCHAR(255) CHARACTER SET utf8 NOT NULL,
     description         TEXT CHARACTER SET utf8         NOT NULL,
+    is_deprecated       boolean DEFAULT FALSE           NOT NULL,
     CONSTRAINT pk_product_table PRIMARY KEY (id),
     FOREIGN KEY (type_id) REFERENCES PRODUCT_TYPE (id)
 );

@@ -22,23 +22,24 @@ public class ProductRepository extends ProductDao {
     this.dsl = dsl;
   }
 
-  public List<ProductWithType> findAllWithType() {
+  public List<ProductWithType> findAllNotDeprecatedWithType() {
 
     return dsl.select(PRODUCT.ID, PRODUCT.NAME, PRODUCT.PRICE, PRODUCT.AMOUNT, PRODUCT.MEASURE_TYPE, PRODUCT.DESCRIPTION, PRODUCT_TYPE.NAME.as("type"))
               .from(PRODUCT)
               .join(PRODUCT_TYPE)
               .on(PRODUCT_TYPE.ID.eq(PRODUCT.TYPE_ID))
+              .where(PRODUCT.IS_DEPRECATED.eq(false))
               .fetchInto(ProductWithType.class);
   }
 
   public List<Product> getByOrderId(final Long id) {
 
     return dsl.select()
-        .from(PRODUCT)
-        .join(PRODUCT_X_ORDER)
-        .on(PRODUCT_X_ORDER.PRODUCT_ID.eq(PRODUCT.ID))
-        .where(PRODUCT_X_ORDER.ORDER_SERVICE_ID.eq(id))
-        .fetchInto(Product.class);
+              .from(PRODUCT)
+              .join(PRODUCT_X_ORDER)
+              .on(PRODUCT_X_ORDER.PRODUCT_ID.eq(PRODUCT.ID))
+              .where(PRODUCT_X_ORDER.ORDER_SERVICE_ID.eq(id))
+              .fetchInto(Product.class);
   }
 
   public Long insertIntoReturningId(final Product product) {
@@ -51,4 +52,11 @@ public class ProductRepository extends ProductDao {
               .getId();
   }
 
+  public void deprecateProduct(final Long id) {
+
+    dsl.update(PRODUCT)
+       .set(PRODUCT.IS_DEPRECATED, true)
+       .where(PRODUCT.ID.eq(id))
+       .execute();
+  }
 }

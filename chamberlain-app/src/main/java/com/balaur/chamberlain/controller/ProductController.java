@@ -23,10 +23,10 @@ public class ProductController {
     return ResponseEntity.ok(productService.getByOrder(id));
   }
 
-  @GetMapping("/products")
+  @GetMapping("/productsNotDeprecated")
   public ResponseEntity<?> getProducts() {
 
-    return ResponseEntity.ok(productService.findAll());
+    return ResponseEntity.ok(productService.findAllNotDeprecated());
   }
 
   @PostMapping("/product")
@@ -49,6 +49,6 @@ public class ProductController {
   @DeleteMapping("/deleteProduct")
   public ResponseEntity<?> deleteProduct(@RequestParam(required = true) final Long id) {
 
-    return ResponseEntity.ok(productService.deleteById(id));
+    return ResponseEntity.ok(productService.deprecateProduct(id));
   }
 }

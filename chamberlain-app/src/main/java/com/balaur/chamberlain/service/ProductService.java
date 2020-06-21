@@ -33,9 +33,9 @@ public class ProductService {
     return productRepository.getByOrderId(id);
   }
 
-  public List<ProductWithType> findAll() {
+  public List<ProductWithType> findAllNotDeprecated() {
 
-    return productRepository.findAllWithType();
+    return productRepository.findAllNotDeprecatedWithType();
   }
 
   public Long insertIntoProductRequest(final String productName) {
@@ -46,12 +46,12 @@ public class ProductService {
   public Long insertIntoReturningId(final String name, final double price, final String measureType, final String description, final ProductTypeEnum type) {
 
     Long typeId = productTypeRepository.getIdByType(type);
-    return productRepository.insertIntoReturningId(new Product(null, name, typeId, price, 0, measureType, description));
+    return productRepository.insertIntoReturningId(new Product(null, name, typeId, price, 0, measureType, description, false));
   }
 
-  public Long deleteById(final Long id) {
+  public Long deprecateProduct(final Long id) {
 
-    productRepository.deleteById(id);
+    productRepository.deprecateProduct(id);
     return id;
   }
 }
